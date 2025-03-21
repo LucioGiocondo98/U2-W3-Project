@@ -7,11 +7,11 @@ const getYearNow = function() {
   const urlParam = new URLSearchParams(location.search);
   const sneakersId = urlParam.get('id');
   
-  const eventsUrl = "https://striveschool-api.herokuapp.com/api/product/";
+  const eventsUrl = "https://striveschool-api.herokuapp.com/api/product";
   const myAPI = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2RkNDBjYjM4MzRiZjAwMTUwMDA3NzEiLCJpYXQiOjE3NDI1NTMyOTEsImV4cCI6MTc0Mzc2Mjg5MX0.m6ysHX2FBHgvVCPxLpoEmOff8YcfGjEIprLN_ChrF_A';
   
   const getSneakersDetails = function() {
-    fetch(eventsUrl + sneakersId, {
+    fetch(eventsUrl +'/'+ sneakersId, {
       headers: {
         Authorization: `Bearer ${myAPI}`,
       },
@@ -44,7 +44,28 @@ const getYearNow = function() {
       console.log('Error:', err);
     });
   };
-  
+  const editArticle = function(){
+    location.assign('./edit.html?id=' + sneakersId)
+  }
+
+  const deleteArticle = function(){
+    fetch(eventsUrl +'/'+ sneakersId,{
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${myAPI}`,
+          },
+    })
+    .then((response)=>{
+        if(response.ok){
+      location.assign('./shop-main.html')
+        }else{
+
+        }
+    })
+    .catch((err)=>{
+        console.log('errore nel delete', err)
+    })
+  }
   getSneakersDetails();
 
   
