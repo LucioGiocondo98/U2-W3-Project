@@ -21,7 +21,8 @@ const imgUrlInput = document.getElementById('imgUrl')
 
 const urlParam = new URLSearchParams(location.search);
 const sneakersId = urlParam.get('id')
-  if(sneakersId){
+
+/*  if(sneakersId){
     fetch(eventsUrl + sneakersId,{
         headers: {
         Authorization: `Bearer ${myAPI}`,
@@ -34,11 +35,17 @@ const sneakersId = urlParam.get('id')
         }
     })
     .then((data)=>{
-    
+        brandInput.value= data.brand
+        nameInput.value= data.name
+        priceInput.value= data.price
+        descriptionInput.value = data.description
+        imgUrlInput = data.imageUrl
+
+
     })
 
   }
-
+*/
 const myAPI = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2RkNDBjYjM4MzRiZjAwMTUwMDA3NzEiLCJpYXQiOjE3NDI1NTMyOTEsImV4cCI6MTc0Mzc2Mjg5MX0.m6ysHX2FBHgvVCPxLpoEmOff8YcfGjEIprLN_ChrF_A'
 //POST sull API
 const form = document.getElementById('event-form')
